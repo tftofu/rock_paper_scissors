@@ -12,6 +12,37 @@
                 }else{
                     return 'scissors';
                 }
+            } // function to get the NPC choice
+
+            function playRound(playerSelect = prompt('Rock, Paper or Scissors?'), computerSelect = computerPlay()){
+                switch (playerSelect,computerSelect){
+                    case playerSelect == 'rock' && computerSelect == 'paper':
+                    return 'Paper wraps Rock. You lose!';
+                    
+                    case playerSelect == 'scissors' && computerSelect == 'paper':
+                    return 'Scissors cut Paper. You win!'
+
+                    case playerSelect == 'paper' && computerSelect == 'paper':
+                    return 'Two Papers don\'t do anything. Draw!'
+
+                    case playerSelect == 'rock' && computerSelect == 'scissors':
+                    return 'Rock beats Scissors. You win!'
+
+                    case playerSelect == 'scissors' && computerSelect == 'scissors':
+                    return 'Two scissors just clank. Draw!'
+
+                    case playerSelect == 'paper' && computerSelect == 'scissors':
+                    return 'Scissors cut Paper. You lose!'
+
+                    case playerSelect == 'rock' && computerSelect == 'rock':
+                    return 'Two Rocks just crack. Draw!'
+
+                    case playerSelect == 'scissors' && computerSelect == 'rock':
+                    return 'Scissors beat Rock. You lose!'
+
+                    case playerSelect == 'paper' && computerSelect == 'rock':
+                    return 'Paper wraps Rock. You win!'
+                }
             }
             </script>
         </body>
