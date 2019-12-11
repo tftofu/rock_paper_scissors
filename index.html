@@ -3,47 +3,85 @@
     <head>
         <body>
             <script>
-            function computerPlay(){
-                let choice = Math.floor(Math.random() * 9);
-                if (choice < 3){
-                    return 'rock';
-                }else if (choice > 5){
-                    return 'paper';
-                }else{
-                    return 'scissors';
-                }
-            } // function to get the NPC choice
+            function game(){
 
-            function playRound(playerSelect = prompt('Rock, Paper or Scissors?'), computerSelect = computerPlay()){
-                switch (playerSelect,computerSelect){
-                    case playerSelect == 'rock' && computerSelect == 'paper':
-                    return 'Paper wraps Rock. You lose!';
+                let playerWin = 0;
+                let computerWin = 0;
+
+                while (playerWin + computerWin < 5){
+                    function computerPlay(){
+                        let choice = Math.floor(Math.random() * 9);
+                        if (choice < 3){
+                            return 'rock';
+                        }else if (choice > 5){
+                            return 'paper';
+                        }else{
+                            return 'scissors';
+                        }
+                    } // function to get the NPC choice
+
+                    const computerSelect = computerPlay();
+                    const playerSelect = prompt('Rock, Paper or Scissors?')
+
+                    console.log(computerSelect,playerSelect)
+
+                    function playRound(playerSelect, computerSelect){
+                        
+                        if (playerSelect == 'rock' && computerSelect == 'paper'){
+                            computerWin++;
+                            return 'Paper wraps Rock. You lose!';
+                        }
+                        
+                        else if (playerSelect == 'scissors' && computerSelect == 'paper'){
+                            playerWin++;                  
+                            return 'Scissors cut Paper. You win!'
+                        }
+
+                        else if (playerSelect == 'paper' && computerSelect == 'paper'){
+                            return 'Two Papers don\'t do anything. Draw!'
+                        }
+
+                        else if (playerSelect == 'rock' && computerSelect == 'scissors'){
+                            playerWin++;
+                            return 'Rock beats Scissors. You win!'
+                        }
+
+                        else if (playerSelect == 'scissors' && computerSelect == 'scissors'){
+                            return 'Two scissors just clank. Draw!'
+                        }
+
+                        else if (playerSelect == 'paper' && computerSelect == 'scissors'){
+                            computerWin++;
+                            return 'Scissors cut Paper. You lose!'
+                        }
+
+                        else if (playerSelect == 'rock' && computerSelect == 'rock'){
+                            return 'Two Rocks just crack. Draw!'
+                        }
+
+                        else if (playerSelect == 'scissors' && computerSelect == 'rock'){
+                            computerWin++;
+                            return 'Scissors beat Rock. You lose!'
+                        }
+
+                        else if (playerSelect == 'paper' && computerSelect == 'rock'){
+                            playerWin++;
+                            return 'Paper wraps Rock. You win!'
+                        }else{
+                        return 'Wrong input'
+                        }
+                    }            
+
+                    console.log(playRound(playerSelect,computerSelect));
+                    console.log(playerWin, computerWin);
                     
-                    case playerSelect == 'scissors' && computerSelect == 'paper':
-                    return 'Scissors cut Paper. You win!'
-
-                    case playerSelect == 'paper' && computerSelect == 'paper':
-                    return 'Two Papers don\'t do anything. Draw!'
-
-                    case playerSelect == 'rock' && computerSelect == 'scissors':
-                    return 'Rock beats Scissors. You win!'
-
-                    case playerSelect == 'scissors' && computerSelect == 'scissors':
-                    return 'Two scissors just clank. Draw!'
-
-                    case playerSelect == 'paper' && computerSelect == 'scissors':
-                    return 'Scissors cut Paper. You lose!'
-
-                    case playerSelect == 'rock' && computerSelect == 'rock':
-                    return 'Two Rocks just crack. Draw!'
-
-                    case playerSelect == 'scissors' && computerSelect == 'rock':
-                    return 'Scissors beat Rock. You lose!'
-
-                    case playerSelect == 'paper' && computerSelect == 'rock':
-                    return 'Paper wraps Rock. You win!'
                 }
-            }
+                if (playerWin>computerWin){
+                    console.log('The human player won the match!');
+                }else{
+                    console.log('The computer wins the match!');
+                } 
+            }game();
             </script>
         </body>
     </head>
